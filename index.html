@@ -1,0 +1,338 @@
+<?php
+$host = 'localhost:8080';
+$user = 'root'; 
+$password = ''; 
+$dbname = 'hospital_management';
+$conn = new mysqli($host, $user, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $appointment_date = $_POST['appointment_date'];
+    $department = $_POST['department'];
+    $message = $_POST['message'];
+    $sql = "INSERT INTO appointments (name, email, phone, appointment_date, department, message) 
+            VALUES ('$name', '$email', '$phone', '$appointment_date', '$department', '$message')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Appointment successfully booked!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital management website</title>
+
+    <script src="https://kit.fontawesome.com/c1df782baf.js"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-rounded/css/uicons-thin-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body> 
+
+    <header>
+        
+        <div class="logo"><img src="images/Hoslogo.png" alt=""></div>
+        <div class="right-icons">
+    </div>
+
+    </header>
+        <div class="main-home">
+
+            <div class="home">
+                <div class="home-left-content">
+                    <span>welcome to hospital management</span>
+                    <h2>We take care our<br> Patients Healths</h2>
+                    <p class="lorem">Giving you the best treatment you deserve.</p>
+                
+                        <div class="home-btn">
+                            <div class="btn"><a href="#appointment">Make Appointment</a></div>
+                        </div>
+                        
+                    </div>
+
+                <div class="home-right-content">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="technology">
+            <div class="main-technology">
+                
+                <div class="inner-technology">
+                    <span></span>
+                    <i class="fi fi-tr-hands-heart"></i>
+                    <h2>Quality & Safety</h2>
+                    <p>Our Delmont hospital utilizes state of the art technology and employs a team of true experts.</p>
+                </div>
+
+                <div class="inner-technology">
+                    <span></span>
+                    <i class="fi fi-rr-doctor"></i>
+                    <h2>Cost efficient Treatment</h2>
+                    <p>we focus on delivering cost-efficient hospital websites by streamlining essential features like patient portals and appointment systems. Our approach leverages cloud-based technologies and mobile optimization to reduce operational costs while enhancing the user experience for both staff and patients.</p>
+                </div>
+
+            </div>
+        </div>
+
+    
+
+        <div class="main-about">
+
+            <div class="about-heading">About Us</div>
+
+            <div class="inner-main-about">
+                <div class="about-inner-content-left">
+                    <img src="images/about1.png" alt="">
+                </div>
+
+                <div class="about-inner-content">
+                    <div class="about-right-content">
+                        <h2>We're setting Standards in Research <br> what's more, Clinical Care.</h2>
+                        <p>We provide the most full medical services, so every person could have the opportunity 
+                         receive qualitative medical help.</p>
+                        <p class="aboutsec-content">
+                            Our Clinic has grown to provide a world class facility for the treatment of tooth loss, dental cosmetics and bore advanced restorative dentistry. We are among
+                             the most qualified implant providers in the AUS with over 30 years of uality training and experience.
+                            </p>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  
+
+        <div class="main-doctors">
+            <div class="doctors-heading">
+                <h2>Our Doctors</h2>
+            </div>
+
+            <div class="main-inner-doctor">
+                <div class="doc-poster">
+                    <div class="doc-icons">
+                        <i class="fa-solid fa-share"></i>
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <img src="images/team1.jpg" alt="">
+
+                    <div class="doc-details">
+                        <h2>Ms Mary</h2>
+                        
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                </div>
+
+                <div class="doc-poster">
+                    <div class="doc-icons">
+                        <i class="fa-solid fa-share"></i>
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <img src="images/team2.jpg" alt="">
+                    <div class="doc-details">
+                        <h2>Mr Joe</h2>
+                        
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="doc-poster">
+                    <div class="doc-icons">
+                        <i class="fa-solid fa-share"></i>
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <img src="images/team3.jpg" alt="">
+                    <div class="doc-details">
+                        <h2>Ms Monice</h2>
+                        
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="doc-poster">
+                    <div class="doc-icons">
+                        <i class="fa-solid fa-share"></i>
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <img src="images/team4.jpg" alt="">
+                    <div class="doc-details">
+                        <h2>Ms Riya</h2>
+                        
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="doc-poster">
+                    <div class="doc-icons">
+                        <i class="fa-solid fa-share"></i>
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <img src="images/team5.jpg" alt="">
+                    <div class="doc-details">
+                        <h2>Mr KimJoUn</h2>
+                        
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="doc-poster">
+                    <div class="doc-icons">
+                        <i class="fa-solid fa-share"></i>
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <img src="images/team6.jpg" alt="">
+
+                    <div class="doc-details">
+                        <h2>Ms Andria</h2>
+                        
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+      <script src="https://kit.fontawesome.com/c1df782baf.js"></script>
+            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-rounded/css/uicons-thin-rounded.css'>
+            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+            <link rel="stylesheet" href="styles1.css">
+        
+        
+        <div class="main-appointment" id="appointment">
+            <div class="appointment-heading">
+                <h2>Make an Appointment</h2>
+            </div>
+        
+            <div class="appointment-container">
+                <form action="submit_appointment.php" method="POST" class="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="appointment-date">Preferred Date:</label>
+                        <input type="date" id="appointment-date" name="appointment_date" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="department">Select Department:</label>
+                        <select id="department" name="department" required>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="General Medicine">General Medicine</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="message">Additional Information:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Any specific information you'd like us to know..."></textarea>
+                    </div>
+        
+                    <button type="submit" class="appointment-btn">Book Appointment</button>
+                    <button type="button" class="appointment-btn" onclick="location.href='index.html';">Home</button>
+                    
+                    
+                    
+                </form>
+            </div>
+        </div>
+
+    <div class="our-service">
+        <div class="service-heading">
+            <h2>Our Services</h2>
+        </div>
+
+        <div class="main-services">
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-solid fa-truck-medical"></i>
+                </div>
+                <h3>Ambulance 24*7</h3>
+                <p>We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-regular fa-hospital"></i>
+                </div>
+                <h3>Monthly Health Checkup Plan</h3>
+                <p>We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <h3>Insurance coverage</h3>
+                <p>We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-solid fa-notes-medical"></i>
+                </div>
+                <h3>Clean and neat ambience</h3>
+                <p>We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3>Medical shop</h3>
+                <p>We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <h3>Online consultation</h3>
+                <p>We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
